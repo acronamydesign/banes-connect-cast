@@ -1,0 +1,28 @@
+html
+	style.
+		.aligner{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height:100%;
+			flex-direction:column;
+			color:#fff;
+			font-size:2em;
+		}
+		body{
+			height:100vh;
+		}
+	script.
+		setTimeout(function(){
+			location.reload()
+		},5000)
+	head
+		title Connection Error
+		include templates/head/styles/index
+
+	body
+		.aligner
+			.inner.top
+				h1 Connection lost!
+			.inner.bottom
+				h3 Reconnecting

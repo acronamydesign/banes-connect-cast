@@ -1,0 +1,19 @@
+mixin article(bundle)
+	section(class!=bundle.view_mode data-background='#fefefe')
+		if bundle.image
+			h3= bundle.title+' '
+			img(src!="data:image/png;base64,"+bundle.image)
+		else
+			h3= bundle.title+' '
+
+		-// image goes here
+	for i in bundle.content
+		section(class!=bundle.view_mode data-background='#fefefe')
+			p=i
+
+- //Make articles scroll downwards.
+- //	section(class!=bundle.view_mode data-background='#fefefe')
+- //		h3= bundle.title+' '
+- //		for i in bundle.content
+- //			section(class!=bundle.view_mode data-background='#fefefe')
+- //				p=i

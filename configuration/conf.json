@@ -1,0 +1,7 @@
+{
+	"localhost":"localhost",
+	"port":8080,
+	"parentSite":"http://connectcast/",
+	"developer":false,
+	"templateEngine":"jade"
+}

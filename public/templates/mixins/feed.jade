@@ -1,0 +1,10 @@
+mixin feed(bundle)
+	section(class!=bundle.view_mode)
+		h1= bundle.title
+
+	for i in bundle.content
+		section(class!=bundle.view_mode+" tint" data-background!=i.image)
+			h1=i.title
+		for x in i.body
+			section(class!=bundle.view_mode data-background='#fefefe')
+				p= x

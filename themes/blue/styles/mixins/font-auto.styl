@@ -1,0 +1,8 @@
+color()
+	if arguments == auto
+		if round(luminosity(@background-color)) == 1
+			color #000
+		else if round(luminosity(@background-color)) == 0
+			color #fff
+	else
+		color arguments
