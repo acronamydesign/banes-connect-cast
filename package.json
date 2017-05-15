@@ -159,10 +159,12 @@
     "xtend": "^4.0.1"
   },
   "devDependencies": {
-    "kouto-swiss": "^0.11.13"
+    "kouto-swiss": "^0.11.13",
+    "yargs": "^8.0.1"
   },
   "scripts": {
-    "test": "nodemon index.js"
+    "develop": "node index.js --env=develop",
+    "pm2-bootstrap": "node index.js --env=production"
   },
   "author": "Adam Crockett",
   "license": "ISC"
