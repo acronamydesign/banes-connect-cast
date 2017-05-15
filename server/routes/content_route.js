@@ -1,11 +1,11 @@
-var http = require('http'),
-  $ = require('../template_fns/route_locals.js'),
-  path = require('path'),
-  url = require('url'),
-  os = require('os'),
-  rp = require('request-promise'),
-  conf = require('../../configuration/conf.json'),
-util = require('util')
+const http = require('http'),
+      $ = require('../template_fns/route_locals.js'),
+      path = require('path'),
+      url = require('url'),
+      os = require('os'),
+      rp = require('request-promise'),
+      conf = require('../../configuration/conf.json'),
+      util = require('util')
 
 function hyphanate(str) {
   return str.replace(/\_/g, '-')
@@ -15,15 +15,7 @@ var request = {}
 request.port = 80
 request.method = 'GET'
 
-module.exports = function(app, io, server_settings) {
-
-  //IO Broadcast
-  //io.on('connection', function(socket) {
-  //  require('../io/warning_broadcast.js')(app, io)
-  //  require('../io/weather_broadcast.js')(app, io)
-  //  require('../io/update_broadcast.js')(app, io, init)
-  //  console.log('Socket.io connection established')
- // });
+module.exports = function(app, conf) {
 
 
   app.get('/settings', function(req, res) {
@@ -103,7 +95,7 @@ if(feeds.length===0){
             data: cleanData,
             location: loc,
             vicinity: vic,
-            server: server_settings
+            server: conf
          })
 
 }
@@ -134,7 +126,7 @@ else{
                         data: cleanData,
                         location: loc,
                         vicinity: vic,
-                        server: server_settings
+                        server: conf
                       })
 
                     })
@@ -143,7 +135,7 @@ else{
 			res.render('err',
 				{data:{
 					title:'General Error',
-					server:server_settings
+					server:conf
 				}
 			})
 			}
@@ -161,7 +153,7 @@ else{
               res.render('err', {
                 data: {
                   title: 'Connection lost',
-                  server: server_settings,
+                  server: conf,
 		  error: err
                 }
               })
@@ -173,7 +165,7 @@ else{
         res.render('err', {
           data: {
             title: 'Something went wrong',
-            server: server_settings
+            server: conf
           }
         })
       }

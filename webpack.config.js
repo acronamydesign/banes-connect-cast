@@ -5,7 +5,7 @@ module.exports = {
     filename: "connect-cast.js",
   },
   module: {
-    rules: [],
+    rules: require("./webpack/rules.config"),
   },
   resolve: {
     modules: [
