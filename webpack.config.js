@@ -3,7 +3,7 @@ const path = require("path")
 module.exports = {
   entry: "./public/webpack.index.js",
   output: {
-    path: path.resolve("./public/scripts"), // string
+    path: path.resolve("./public/app"), // string
     filename: "connect-cast.js",
   },
   module: {

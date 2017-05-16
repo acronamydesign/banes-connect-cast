@@ -35,7 +35,7 @@ console.log("here",conf)
         var q = url.parse(req.url, true).query,
           loc = q.location,
           vic = q.vicinity,
-          par = conf.parentSite,
+          par = "http://"+conf.parentSite,
           reqPath = par + path.join('get', hyphanate(loc)),
           query = ['?locations=' + loc].join(''),
           debugMode = q.debug || false
