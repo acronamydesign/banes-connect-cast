@@ -1,16 +1,15 @@
 var path = require('path'),
-		fs = require('fs'),
-		conf = require("./conf.js")()
+		fs = require('fs')
 
-module.exports = function(app){
+module.exports = function(app,conf){
 
-	var routeFilesPath = path.join(__dirname,'routes')
+	const routeFilesPath = path.join(__dirname,'routes');
 	fs.readdir(routeFilesPath,(err,resArr)=>{
 		if(err){
 			console.log(err)
 		}
 		for(let i in resArr){ 
-			require( path.join( routeFilesPath, resArr[i]) )( app )
+			require( path.join( routeFilesPath, resArr[i]) )( app, conf )
 		}
 	})
 

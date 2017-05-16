@@ -1,7 +1,9 @@
+const path = require("path")
+
 module.exports = {
-  entry: "./",
+  entry: "./public/webpack.index.js",
   output: {
-    path: path.resolve(__dirname, "dist"), // string
+    path: path.resolve("./public/scripts"), // string
     filename: "connect-cast.js",
   },
   module: {
@@ -17,5 +19,5 @@ module.exports = {
   devtool: "source-map", // enum
   context: __dirname,
   target: "web",
-  plugins: [],
+  plugins: require("./webpack/plugins.config"),
 }

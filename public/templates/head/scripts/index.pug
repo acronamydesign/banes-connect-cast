@@ -8,6 +8,8 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min
 script.
 	window.socket = io.connect('http://#{host}:#{port}');
 
+script(src="/scripts/connect-cast.js");
+
 -//include all scripts after socket io
 
 script(src='scripts/index.js')
