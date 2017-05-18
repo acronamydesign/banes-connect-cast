@@ -5,35 +5,24 @@ include src/templates/mixins/feed.pug
 include src/templates/mixins/message.pug
 include src/templates/mixins/video.pug
 
-- var noDataSplash = ['http://whc.unesco.org/uploads/thumbs/site_0428_0001-750-0-20100510122518.jpg','https://englacrosse.s3.amazonaws.com/media/2014/02/Bath-Circus-aerial-view-22.jpg','http://www.hydrock.com/media/cache/44/c0/44c0ed3f91f915b2682c189157ec6c9d.jpg','http://www.tailormadeces.com/imagprod/content/large_image_101.jpg','https://richardwyattblog.files.wordpress.com/2015/05/1-keynsham-007.jpg','https://woodawards.com/wp-content/uploads/2015/08/Keynsham-Civic-Centre-4-890x470.jpg','https://www.st-christophers.co.uk/__data/assets/image/0003/295770/bath-34.jpg']
-- var random = Math.floor(Math.random() * noDataSplash.length) + 0
-
 html
 	head
 		include src/templates/head
-		title= location.capitalize()
+		title= location
 
 	body
-		.stat-bar
-			.stat-left
-			.stat-center
-				p
-			.stat-right
-				p.date --/--/--
-				p.time --:--
+		include src/templates/status-bar.partial.pug
 		.reveal
 			.slides
-				if $.data.length > 0
-					for bundle in $.data
-						if bundle.view_mode === 'article'
-							+article(bundle)
-						else if bundle.view_mode === 'feed'
-							+feed(bundle)
-						else if bundle.view_mode === 'video'
-							+video(bundle)
-						else if bundle.view_mode === 'message'
-							+message(bundle)
-						else if bundle.view_mode === 'advert_image'
-							+advert(bundle)
-				else
-					section(data-background=noDataSplash[random])
+				if _.data.length > 0
+					for slide in _.data
+						if slide.view_mode === 'article'
+							+article(slide)
+						else if slide.view_mode === 'feed'
+							+feed(slide)
+						else if slide.view_mode === 'video'
+							+video(slide)
+						else if slide.view_mode === 'message'
+							+message(slide)
+						else if slide.view_mode === 'advert_image'
+							+advert(slide)

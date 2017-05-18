@@ -11,7 +11,8 @@ const serverConf = {
 	engine: "pug",
 	port:8080,
 	host:"localhost",
-	parentSite:"connect-cast.dev/"
+	parentSite:"connect-cast.dev/",
+	youtubeApiKey:"AIzaSyAY7gaLqRDIudk4KesUmQNBuBZLjooTkRw"
 }
 
 function usePublic(dir){
@@ -24,17 +25,16 @@ module.exports = function(app){
 
 	app.use(bodyParser.urlencoded({extended:false}))
 
-console.log("HERE", '/scripts', usePublic('scripts'))
 
 	//static
-	app.use('/scripts', 		express.static( usePublic('scripts') ));
+	app.use('/scripts', 		express.static( usePublic('app') ));
 	app.use('/styles', 			express.static( usePublic('styles') ));
 	app.use('/images', 			express.static( usePublic('images') ));
 	app.use('/staff/scripts', 	express.static( usePublic('scripts') ));
 	app.use('/staff/styles', 	express.static( usePublic('styles') ));
 	app.use('/staff/images', 	express.static( usePublic('images') ));
 	
-	app.use('/app/scripts', 		express.static( usePublic('scripts') ));
+	app.use('/app/scripts', 		express.static( usePublic('app') ));
 	app.use('/app/styles', 			express.static( usePublic('styles') ));
 	app.use('/app/images', 			express.static( usePublic('images') ));
 	app.use('/app/staff/scripts', 	express.static( usePublic('scripts') ));
@@ -46,7 +46,7 @@ console.log("HERE", '/scripts', usePublic('scripts'))
 	app.set('view engine', 	serverConf.engine);
 
 	//Events (SSE)
-
+	require("./sse/screen.control")(app);
 
 	return serverConf;
 }

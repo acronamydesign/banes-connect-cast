@@ -1,19 +1,19 @@
-mixin article(bundle)
-	section(class!=bundle.view_mode data-background='#fefefe')
-		if bundle.image
-			h3= bundle.title+' '
-			img(src!="data:image/png;base64,"+bundle.image)
+mixin article(slide)
+	section(class!=slide.view_mode data-background='#fefefe')
+		if slide.image
+			h3= slide.title+' '
+			img(src!="data:image/png;base64,"+slide.image)
 		else
-			h3= bundle.title+' '
+			h3= slide.title+' '
 
 		-// image goes here
-	for i in bundle.content
-		section(class!=bundle.view_mode data-background='#fefefe')
+	for i in slide.content
+		section(class!=slide.view_mode data-background='#fefefe')
 			p=i
 
 - //Make articles scroll downwards.
-- //	section(class!=bundle.view_mode data-background='#fefefe')
-- //		h3= bundle.title+' '
-- //		for i in bundle.content
-- //			section(class!=bundle.view_mode data-background='#fefefe')
+- //	section(class!=slide.view_mode data-background='#fefefe')
+- //		h3= slide.title+' '
+- //		for i in slide.content
+- //			section(class!=slide.view_mode data-background='#fefefe')
 - //				p=i
