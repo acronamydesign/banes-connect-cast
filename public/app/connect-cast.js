@@ -23677,7 +23677,7 @@ function countdownRun(message,cb){
 //pass in reveal to cotroll the screens
 module.exports = function refresh($, reveal, location ) {
     var io = __webpack_require__(149),
-        socket = io();
+        socket = io("http://connectcast.bathnes.gov.uk");
 
     
     /**
