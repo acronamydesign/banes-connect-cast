@@ -27,7 +27,7 @@ function countdownRun(message,cb){
 //pass in reveal to cotroll the screens
 module.exports = function refresh($, reveal, location ) {
     var io = require('socket.io-client'),
-        socket = io("http://localhost:3001");
+        socket = io("connectcast.bathnes.gov.uk:8080");
 
     
     /**

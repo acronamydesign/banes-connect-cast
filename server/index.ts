@@ -15,4 +15,4 @@ routeInjection( app, serverConf );
 
 //greeter
 console.log("Server starting...");
-app.listen(serverConf.port);
+//app.listen(serverConf.port);

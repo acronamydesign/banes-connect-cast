@@ -6,7 +6,7 @@ import * as favicon from "serve-favicon";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as http from "http";
-import * as socket from "socket.io";
+import * as io from "socket.io";
 
 //server side events
 import {eventIndex} from "./sse/control.index"
@@ -52,9 +52,9 @@ const serverConf:ServerCofig = {
 	public: publicPath,
 	engine: "pug",
 	port:8080,
-    socketIoPort:3001,
-	host:"localhost",
-	parentSite:"connect-cast.dev/",
+    socketIoPort:8080,
+	host:"connectcast.bathnes.gov.uk/",
+	parentSite:"connectcast.bathnes.gov.uk/",
 	youtubeApiKey:"AIzaSyAY7gaLqRDIudk4KesUmQNBuBZLjooTkRw",
     usePublic:(dir)=>{
         return path.resolve(__dirname, publicPath, dir);
@@ -67,14 +67,12 @@ export function configure(app){
 
     //start socket io
     const socketIoServer = http.createServer(app);
-    const io = socket(socketIoServer);
+    const IO = io.listen(socketIoServer);
+
 
     //middlewhare
 	app.use(bodyParser.urlencoded({extended:false}))
     app.use(cookieParser())
-
-    //make socket io portable
-    app.set('socketio', io);
 
 	//static
 	app.use("/socket.io.js",    express.static( path.resolve("node_modules","socket.io-client","dist","socket.io.js") ) );
@@ -97,12 +95,12 @@ export function configure(app){
 	app.set('view engine', 	serverConf.engine);
 
 
-    socketIoServer.listen(serverConf.socketIoPort,()=>{
-        console.log("Socket.io is listening on port "+serverConf.socketIoPort);
+    socketIoServer.listen(serverConf.port,()=>{
+        console.log("Socket.io is listening on port "+serverConf.port);
     })
 
 	//Events (SSE)
-    eventIndex(app, serverConf, io);
+    eventIndex(app, serverConf, IO);
 	
 
 	return serverConf;
