@@ -1,15 +1,17 @@
 //Webpack 
 
-
+require("node_modules/reveal.js/css/theme/white.css");
 require('@styles/index.styl');
 
-document.addEventListener("DOMContentLoaded", function(event) {
+var $ = require('node_modules/domtastic/dist/domtastic.js');
+var reveal = require("node_modules/reveal.js/js/reveal.js");
+//get the location cookie.
+var cookies = require("node_modules/cookie/index.js"),
+    location = cookies.parse(document.cookie).location;
+console.log("Location cookie: " +location);
+window.location.hash = location;
 
-    //get the location cookie.
-    var cookies = require("node_modules/cookie/index.js"),
-        location = cookies.parse(document.cookie).location;
-    console.log("Location cookie: " +location);
-    window.location.hash = location;
+document.addEventListener("DOMContentLoaded", function(event) {
 
     //only on reveal page
     if(document.querySelector(".reveal")){
@@ -18,19 +20,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
         //load clock
         require("@scripts/clock.js")();
         //configure reveal
-        var reveal = require("node_modules/reveal.js/js/reveal.js"),
-            revealConf = require("@scripts/reveal-conf.js")(reveal),
-            revealCustomEvents = require("@scripts/reveal-custom-events.js"),
-            revealPostCustomEvents = require("@scripts/reveal-post-custom-events.js")
         
+        var revealConf = require("@scripts/reveal-conf.js"),
+            revealCustomEvents = require("@scripts/reveal-custom-events.js");
+
         revealCustomEvents(reveal);
-        //start reveal
-        reveal.initialize();
-        //after load add events
-        reveal.addEventListener( 'ready', function( event ) {
-            revealPostCustomEvents(reveal);
-            require("@scripts/sse.js")(reveal);
-        });
+
+        reveal.initialize( revealConf );
     }
 });
 
+window.addEventListener("load", function(event) {
+    var revealPostCustomEvents = require("@scripts/reveal-post-custom-events.js")
+    require("@scripts/sse.js")($, reveal, location);
+    revealPostCustomEvents($, reveal );
+})

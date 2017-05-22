@@ -5,10 +5,12 @@ import * as fs from "fs";
 import * as favicon from "serve-favicon";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
+import * as http from "http";
+import * as socket from "socket.io";
 
 //server side events
-import {eventRoute} from "./sse/control"
-import {refreshCtrl} from "./sse/screen.control";
+import {eventIndex} from "./sse/control.index"
+
 
 interface ServerCofig{
     /**
@@ -23,6 +25,10 @@ interface ServerCofig{
      * The port on which this server runs.
     */
     port:number;
+    /**
+     * The Socket io port.
+    */
+    socketIoPort:number;
     /**
      * The host ip on which this server runs.
     */
@@ -46,6 +52,7 @@ const serverConf:ServerCofig = {
 	public: publicPath,
 	engine: "pug",
 	port:8080,
+    socketIoPort:3001,
 	host:"localhost",
 	parentSite:"connect-cast.dev/",
 	youtubeApiKey:"AIzaSyAY7gaLqRDIudk4KesUmQNBuBZLjooTkRw",
@@ -58,13 +65,22 @@ const usePublic = serverConf.usePublic;
 
 export function configure(app){
 
+    //start socket io
+    const socketIoServer = http.createServer(app);
+    const io = socket(socketIoServer);
+
+    //middlewhare
 	app.use(bodyParser.urlencoded({extended:false}))
     app.use(cookieParser())
 
+    //make socket io portable
+    app.set('socketio', io);
+
 	//static
-	app.use('/scripts', 		express.static( usePublic('app') ));
+	app.use("/socket.io.js",    express.static( path.resolve("node_modules","socket.io-client","dist","socket.io.js") ) );
+    app.use('/scripts', 		express.static( usePublic('app') ));
 	app.use('/styles', 			express.static( usePublic('styles') ));
-	app.use('/images', 			express.static( usePublic('images') ));
+	app.use('/images', 			express.static( usePublic('src/images') ));
 	app.use('/staff/scripts', 	express.static( usePublic('scripts') ));
 	app.use('/staff/styles', 	express.static( usePublic('styles') ));
 	app.use('/staff/images', 	express.static( usePublic('images') ));
@@ -80,9 +96,14 @@ export function configure(app){
 	app.set('views', 		usePublic(""));
 	app.set('view engine', 	serverConf.engine);
 
+
+    socketIoServer.listen(serverConf.socketIoPort,()=>{
+        console.log("Socket.io is listening on port "+serverConf.socketIoPort);
+    })
+
 	//Events (SSE)
-    eventRoute(app);
-	refreshCtrl(app);
+    eventIndex(app, serverConf, io);
+	
 
 	return serverConf;
 }

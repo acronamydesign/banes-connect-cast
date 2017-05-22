@@ -1,10 +1,10 @@
 "use strict";
-var express = require("express");
-var app = express();
-var config_1 = require("./config");
-var routes_index_1 = require("./routes.index");
+const express = require("express");
+const app = express();
+const config_1 = require("./config");
+const routes_index_1 = require("./routes.index");
 //load config
-var serverConf = config_1.configure(app);
+const serverConf = config_1.configure(app);
 //load routes
 routes_index_1.routeInjection(app, serverConf);
 //greeter

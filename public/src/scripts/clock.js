@@ -2,7 +2,7 @@ var moment = require("node_modules/moment/moment.js")
 
 module.exports = function clock(params) {
 
-	if(document.querySelector('.stat')){
+	if(document.querySelector('.stat-bar')){
 		var custom = {
 			d:moment().format('dddd MMM Do - H:mm').split(' ')[0],
 			m:moment().format('dddd MMM Do - H:mm').split(' ')[1],

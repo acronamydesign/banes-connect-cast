@@ -7,15 +7,15 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-var url = require("url");
+const url = require("url");
 /**
  * Usefull string helpers
 */
 exports.stringFunctions = {
-    capitalize: function (str) {
+    capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     },
-    hyphanate: function (str) {
+    hyphanate(str) {
         return str.replace(/_/g, "-");
     }
 };
@@ -23,8 +23,8 @@ exports.stringFunctions = {
  * Usefull route misc helpers
 */
 function routeHelper(data) {
-    var helper = __assign({ find: function (prop, val) {
-            return data.filter(function (cbdata) {
+    const helper = __assign({ find(prop, val) {
+            return data.filter(cbdata => {
                 return cbdata[prop] == val;
             });
         }, data: data }, exports.stringFunctions);

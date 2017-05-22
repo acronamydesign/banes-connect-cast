@@ -8,21 +8,13 @@ include src/templates/mixins/video.pug
 html
 	head
 		include src/templates/head
-		title= location
+		title= locals.location
 
 	body
 		include src/templates/status-bar.partial.pug
 		.reveal
 			.slides
-				if _.data.length > 0
-					for slide in _.data
-						if slide.view_mode === 'article'
-							+article(slide)
-						else if slide.view_mode === 'feed'
-							+feed(slide)
-						else if slide.view_mode === 'video'
-							+video(slide)
-						else if slide.view_mode === 'message'
-							+message(slide)
-						else if slide.view_mode === 'advert_image'
-							+advert(slide)
+				section.blank
+					h1= locals.location
+					//blank is required for reveal to load correctly
+				//remaining content pushed by socketio

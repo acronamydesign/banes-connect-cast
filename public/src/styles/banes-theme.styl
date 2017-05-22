@@ -1,6 +1,71 @@
 body
-    font-family sans-serif
+    font-family:sans-serif;
     background-color:#000;
+
+
+$shade-start = 0%;
+$shade-end-color = .1;
 
 .stat-bar
     color #fff
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    position: fixed;
+    background-color:rgba(0,0,0,.2);
+    transition:height .3s ease-in;
+
+.stat-bar.collapse
+    height:0;
+
+//sizing
+$content-height = 85vh;
+$stat-bar-height = 100vh - $content-height;
+
+.stat-bar
+    height: $stat-bar-height;
+    overflow: hidden;
+    position: absolute;
+    padding-top: 0;
+    padding-bottom: 0;
+.reveal.default
+    height: $content-height;
+    position: absolute;
+    padding-top: $stat-bar-height;
+
+.reveal .slides
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // Article
+    section.article
+        header.details
+            text-align: left;
+            font-size:50%;
+        article
+                text-align: left;
+        footer
+            font-size: 50%;
+            text-align: left;
+            .page-number
+                .devider
+                    &:before
+                        content:"of";
+    section.feed
+        header.details
+            text-align: left;
+            font-size:50%;
+        article
+                text-align: left;
+        footer
+            font-size: 50%;
+            text-align: left;
+            .page-number
+                .devider
+                    &:before
+                        content:"of";
+
+.reveal .backgrounds
+    div.slide-background.article.article-content,
+    div.slide-background.feed.feed-content
+        opacity: .1;
+    div.slide-background.feed-splash
+        background-blend-mode: multiply;

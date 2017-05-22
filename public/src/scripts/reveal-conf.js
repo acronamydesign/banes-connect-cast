@@ -1,13 +1,13 @@
-module.exports = (reveal)=> reveal.initialize({
+module.exports = {
 
 	// Display controls in the bottom right corner
-	controls: true,
+	controls: false,
 
 	// Display a presentation progress bar
 	progress: true,
 
 	// Display the page number of the current slide
-	slideNumber: false,
+	slideNumber: true,
 
 	// Push each slide change to the browser history
 	history: false,
@@ -19,7 +19,7 @@ module.exports = (reveal)=> reveal.initialize({
 	overview: true,
 
 	// Vertical centering of slides
-	center: true,
+	center: false,
 
 	// Enables touch navigation on devices with touch input
 	touch: false,
@@ -35,11 +35,11 @@ module.exports = (reveal)=> reveal.initialize({
 
 	// Flags if the presentation is running in an embedded mode,
 	// i.e. contained within a limited portion of the screen
-	embedded: false,
+	embedded: true,
 
 	// Flags if we should show a help overlay when the questionmark
 	// key is pressed
-	help: true,
+	help: false,
 
 	// Flags if speaker notes should be visible to all viewers
 	showNotes: true,
@@ -59,7 +59,7 @@ module.exports = (reveal)=> reveal.initialize({
 	hideAddressBar: true,
 
 	// Opens links in an iframe preview overlay
-	previewLinks: false,
+	previewLinks: true,
 
 	// Transition style
 	transition: 'default', // none/fade/slide/convex/concave/zoom
@@ -98,4 +98,4 @@ module.exports = (reveal)=> reveal.initialize({
 	minScale: 0.1,
 	maxScale: 1.5
 
-});
+}

@@ -19,78 +19,16 @@ export function consumerRoute( app, serverConf ){
     app.get("/app", loadContent.bind(serverConf));
 }
 
-export interface PlaylistItem{
-    /**
-     * How to render this slide
-    */
-    viewMode:"advert_image"|"video"|"feed"|"message"|"article";
-    /**
-     * Has this slide been processed
-    */
-    processed:boolean;
-    /**
-     * The weight that this content should apear
-    */
-    weight:number
-}
-
-
 async function loadContent( req:Request, res:Response ){
-    const location = req.cookies.location,
-            serverConf = this,
-            parentSite = hypertextProtocal( serverConf.parentSite, "http://" ),
-            endpoint = urlJoin( parentSite, "get", stringFunctions.hyphanate(location) );
-    
-    console.log("Requesting content for", location);
-
-    
-
-    let endpointData = await request(endpoint);
-    endpointData = JSON.parse(endpointData);
-    //initial load
-    function playlistItemHandler(playlistItem){
-        if(playlistItem.viewMode==="advert_image"){
-            return push.advert( playlistItem );
-        }
-        if(playlistItem.viewMode==="video"){
-            return push.video( playlistItem );
-        }
-        if(playlistItem.viewMode==="feed"){
-            return push.feed( playlistItem );
-        }
-        if(playlistItem.viewMode==="message"){
-            return push.message( playlistItem );
-        }
-        if(playlistItem.viewMode==="article"){
-            return push.article( playlistItem );
+    const location = req.cookies.location
+    const renderData = {
+        location:location,
+        _:{
+            data:{}
         }
     }
-    const playlist = endpointData.map((item,index)=>{
-        let playlistItem:PlaylistItem ={
-            viewMode:item.view_mode,
-            processed:false,
-            weight:index
-        }
-        return playlistItemHandler(playlistItem);
-    });
 
-    console.log( playlist )
-
-    // const playlistUpdater = new Proxy(playlist,{
-    //     set(tar,prop,val){
-
-    //         Reflect.set(tar,prop,val);
-    //     }
-    // })
-
-    const renderData = {
-            title:location,
-            _:{
-                data:endpointData.length
-            }
-        }
-
-    res.render("index",renderData)
+    res.render("index", renderData);
     
 }
 

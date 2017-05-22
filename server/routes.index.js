@@ -1,7 +1,7 @@
 "use strict";
-var noroot_route_1 = require("./routes/noroot.route");
-var consumer_route_1 = require("./routes/consumer.route");
-var settings_route_1 = require("./routes/settings.route");
+const noroot_route_1 = require("./routes/noroot.route");
+const consumer_route_1 = require("./routes/consumer.route");
+const settings_route_1 = require("./routes/settings.route");
 /**
  * This index function is intended to share the app and conf with its routes.
 */
