@@ -36,43 +36,52 @@ export interface PlaylistItem{
     content:string;
 }
 
-//helper
-function socketScreen(io, locationId:string):SocketIO.Namespace{
-    return io.to(locationId)
-}
-
 
 //Go and build the templates server side, when ready emit them to connected client
-async function playlistItemHandler(playlistItem, io, locationId, intendedIndex){
+async function playlistItemHandler(playlistItem, client, locationId, intendedIndex){
 
     const viewMode = playlistItem.view_mode;
 
     if(viewMode==="advert_image"){
         const template = await advert(playlistItem);
-        socketScreen(io, locationId).emit("populate", {template:template, index:intendedIndex});
+        return JSON.stringify({template:template, index:intendedIndex});
     }
+
+    //for the moment cannot run videos, disabled client side
+    //try download them?
+
+    //data-background-video may work?
     if(viewMode==="video"){
-        const template = await video(playlistItem);
-        socketScreen(io, locationId).emit("populate", {template:template, index:intendedIndex});
+        const template = ""; //await video(playlistItem);
+        return {template:template, index:intendedIndex, disabled:true};
     }
     if(viewMode==="feed"){
         const template = await feed(playlistItem);
-        socketScreen(io, locationId).emit("populate", {template:template, index:intendedIndex});
+        return {template:template, index:intendedIndex};
     }
     if(viewMode==="message"){
         const template = await message(playlistItem);
-        socketScreen(io, locationId).emit("populate", {template:template, index:intendedIndex});
+        return {template:template, index:intendedIndex};
     }
     if(viewMode==="article"){
         const template = await article(playlistItem);
-        socketScreen(io, locationId).emit("populate", {template:template, index:intendedIndex});
+        return {template:template, index:intendedIndex};
     }
 }
 
-export async function populateCtrl(serverConf, locationId, io){
+export async function populateCtrl(serverConf, locationId, client){
     const endpointData = await location(serverConf, locationId);
     //initial loaded content
-    endpointData.forEach( (playlistItem, intendedIndex)=> {
-        playlistItemHandler(playlistItem, io, locationId, intendedIndex)
+    const slides = []
+
+    endpointData.forEach(function(playlistItem, intendedIndex){
+
+        let results = playlistItemHandler(playlistItem, client, locationId, intendedIndex)
+        slides.push(results);
     });
+
+    //Ready to send
+    if(slides.length === endpointData.length){
+        return Promise.all(slides)
+    }
 }

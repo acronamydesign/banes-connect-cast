@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function externalCtrl(app) {
     //@ctrl :: param to event fire in browser.
     //send event to all screens

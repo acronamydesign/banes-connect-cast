@@ -19,7 +19,7 @@ module.exports = {
 	overview: true,
 
 	// Vertical centering of slides
-	center: false,
+	center: true,
 
 	// Enables touch navigation on devices with touch input
 	touch: false,

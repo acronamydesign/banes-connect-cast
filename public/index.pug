@@ -10,11 +10,15 @@ html
 		include src/templates/head
 		title= locals.location
 
-	body
+	body(class!="env-"+_.env||"prod")
 		include src/templates/status-bar.partial.pug
 		.reveal
 			.slides
-				section.blank
-					h1= locals.location
+				section.blank(data-background-color="#0091c8")
+					h1= locals.location+" Connect Cast"
 					//blank is required for reveal to load correctly
-				//remaining content pushed by socketio
+				//remaining content pushed by sse
+
+.overlay
+	.loader
+		span.loader-text

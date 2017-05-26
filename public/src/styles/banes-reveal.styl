@@ -15,31 +15,33 @@ $stat-height = 10%
 		box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
 
 .logo
-	height:80%;
+	height:60%;
 
 .stat-bar
 	z-index: 9999;
 	background-repeat:no-repeat;
 	background-size:100%;
 	width:100%;
+	top:0;
+	height:100px;
 	position:absolute;
 	font-weight:100;
-	display: flex;
-	@media screen and (min-width: 1400px)
-		font-size:2em;
-	justify-content: flex-start;
-	align-items: center;
+	display:table;
+	
 	.stat-left
-		margin-left:1em;
-	.stat-center
-		text-align:center;
+		text-align:left;
+		padding-left:20px;
 	.stat-right
-		margin-right:1em;
 		text-align:right;
+		padding-right:20px;
+		
 	.stat-left,
-	.stat-center,
 	.stat-right
-		width:33.3%;
+		display:table-cell;
+		vertical-align: middle;
+		box-sizing:border-box;
+		width:50%;
+		height:100%;
 
 
 	.location
@@ -47,44 +49,41 @@ $stat-height = 10%
 		margin:0;
 
 .overlay
+	&.show
+		opacity:1;
+	opacity:0;
+	transition: opacity .3s ease-in-out;
 	color:#fff;
-	background-color:#000;
 	z-index:9999;
+	background-color:rgba(0,0,0,.6);
+	margin:auto;
+	border-radius:4px;
 	position:absolute;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
+	width:300px;
+	height:100px;
 	right:0;
 	bottom:0;
-	display:flex;
-	align-items:center;
-	justify-content:center;
 	font-size:3em;
-	flex-direction: column;
 	text-align: center;
-	//opacity:0;
-	&.High
-		background-color:rgba(231, 75, 61, 0.97);
-	&.Medium
-		background-color:rgba(231, 172, 61, 0.97);
-	h1
-		text-transform:uppercase;
-	.ebs-duration
-		position:absolute;
-		top:0;
-		left:0;
-		right:0;
-		width:100%;
+	display:table;
+	.loader
+		display:table-cell;
+		vertical-align:middle;
+		position:relative;
+		height:@height - 20px;
 		text-align:center;
-		display:block;
+		span.loader-text
+			&:before
+				display:inline-block;
+				margin-top:4px;
+				font-family:sans-serif;
+				font-size:14px;
+				content:"Loading Content...";
 
 .slides
-	.message
-		display: flex!important;
-		align-items: center;
-		justify-content: center;
-		height:inherit;
+	.blank
+		h1
+			text-transform:capitalize;
 
 .slide-background.feed.tint
 	-webkit-box-shadow: inset 0px 0px 0px 9999em rgba(0,0,0,0.75);
@@ -106,3 +105,5 @@ $stat-height = 10%
 .slides
 	section
 		font-size:1.75em;
+
+

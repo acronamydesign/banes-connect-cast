@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function advert(playlistItem) {
     console.log(playlistItem);
     //for tracking

@@ -2,6 +2,11 @@ import * as express from "express";
 import * as path from "path";
 import * as fs from "fs";
 import {Application} from "express";
+import * as yargs from "yargs";
+const args = yargs.argv
+
+
+console.log(args)
 
 const app:Application = express();
 
@@ -14,5 +19,5 @@ const serverConf = configure( app );
 routeInjection( app, serverConf );
 
 //greeter
-console.log("Server starting...");
+console.log("Server starting with host "+ args.host);
 //app.listen(serverConf.port);

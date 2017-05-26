@@ -7,6 +7,9 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as http from "http";
 import * as io from "socket.io";
+import * as yargs from "yargs";
+
+const args = yargs.argv
 
 //server side events
 import {eventIndex} from "./sse/control.index"
@@ -25,10 +28,6 @@ interface ServerCofig{
      * The port on which this server runs.
     */
     port:number;
-    /**
-     * The Socket io port.
-    */
-    socketIoPort:number;
     /**
      * The host ip on which this server runs.
     */
@@ -52,9 +51,8 @@ const serverConf:ServerCofig = {
 	public: publicPath,
 	engine: "pug",
 	port:8080,
-    socketIoPort:8080,
-	host:"connectcast.bathnes.gov.uk/",
-	parentSite:"connectcast.bathnes.gov.uk/",
+	host:args.host,
+	parentSite:args.host,
 	youtubeApiKey:"AIzaSyAY7gaLqRDIudk4KesUmQNBuBZLjooTkRw",
     usePublic:(dir)=>{
         return path.resolve(__dirname, publicPath, dir);
@@ -65,9 +63,14 @@ const usePublic = serverConf.usePublic;
 
 export function configure(app){
 
+    //start sse
+    const sseServer = http.createServer(app);
+ 
+
+
     //start socket io
-    const socketIoServer = http.createServer(app);
-    const IO = io.listen(socketIoServer);
+    // const socketIoServer = http.createServer(app);
+    // const IO = io.listen(socketIoServer);
 
 
     //middlewhare
@@ -94,14 +97,8 @@ export function configure(app){
 	app.set('views', 		usePublic(""));
 	app.set('view engine', 	serverConf.engine);
 
-
-    socketIoServer.listen(serverConf.port,()=>{
-        console.log("Socket.io is listening on port "+serverConf.port);
-    })
-
 	//Events (SSE)
-    eventIndex(app, serverConf, IO);
+    eventIndex(app, serverConf, sseServer);
 	
-
 	return serverConf;
 }

@@ -1,0 +1,10 @@
+{
+    "develop":{
+        "port":8080,
+        "hostIp":"192.168.1.81"
+    },
+    "production":{
+        "port":8080,
+        "host":"connectcast.bathnes.gov.uk/"
+    }
+}

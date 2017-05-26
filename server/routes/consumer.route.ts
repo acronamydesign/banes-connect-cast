@@ -24,7 +24,7 @@ async function loadContent( req:Request, res:Response ){
     const renderData = {
         location:location,
         _:{
-            data:{}
+            env:process.env.NODE_ENV
         }
     }
 

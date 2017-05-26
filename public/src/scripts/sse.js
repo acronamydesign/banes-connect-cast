@@ -25,42 +25,73 @@ function countdownRun(message,cb){
 }
 
 //pass in reveal to cotroll the screens
-module.exports = function refresh($, reveal, location ) {
-    var io = require('socket.io-client'),
-        socket = io("http://connectcast.bathnes.gov.uk");
+module.exports = function refresh($, reveal, es ) {
 
     
-    /**
-     * Identity
-    */
-    socket.on("identity-yourself",()=>{
-        console.log("Server whants to know who I am...")
-        console.log("I am "+location+"!")
-        socket.emit("identity", location);
-        socket.emit("ready");
-    })
 
-    //this may be posible
-    function arrangeIndex(){
+    // es.addEventListener("greeting", function(message){
+    //     console.log("server event - "+message.data)
+    // })
 
-    }
+    // es.addEventListener("populate", function(data){
 
-    socket.on("populate",(data)=>{
-        //malformed data will not render
-        var target = $(".reveal .slides");
-        if(data.template){
-            var tense = target.children().length === 0 ? "present" : "future";
-            var template = data.template;
-            template = template.replace("{{tense}}",tense);
-            template = template.replace("{{index}}",data.index);
-            target.append(template);
+        
+    //     //malformed data will not render
+    //     var target = $(".reveal .slides");
+
+    //     if(data.template){
+    //         var tense = target.children().length === 0 ? "present" : "future";
+    //         var template = JSON.parse(data.template);
+    //         template = template.replace("{{tense}}",tense);
+    //         template = template.replace("{{index}}",data.index);
+    //         target.append(template);
+    //         console.log(target)
+    //         $( '.navigate-right' ).addClass("enabled")
             
-            $( '.navigate-right' ).addClass("enabled")
-            
-            reveal.sync();
-        }
+    //         //reveal.sync();
+    //     }
 
-    })
+    // })
+
+    //start the handshake
+    
+
+    
+    // var io = require('socket.io-client'),
+    //     socket = io("http://connectcast.bathnes.gov.uk");
+
+    
+    // /**
+    //  * Identity
+    // */
+    // socket.on("identity-yourself",function(){
+    //     console.log("Server whants to know who I am...")
+    //     console.log("I am "+location+"!")
+    //     socket.emit("identity", location);
+    //     socket.emit("ready");
+    // })
+
+    // //this may be posible
+    // function arrangeIndex(){
+
+    // }
+
+    // socket.on("populate",function(data){
+    //     //malformed data will not render
+    //     var target = $(".reveal .slides");
+    //     if(data.template){
+    //         var tense = target.children().length === 0 ? "present" : "future";
+    //         var template = data.template;
+    //         template = template.replace("{{tense}}",tense);
+    //         template = template.replace("{{index}}",data.index);
+    //         target.append(template);
+            
+    //         $( '.navigate-right' ).addClass("enabled")
+            
+    //         reveal.sync();
+    //     }
+
+    // })
 
 
     /**

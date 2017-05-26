@@ -1,4 +1,4 @@
-import { PlaylistItem } from "../routes/consumer.route";
+import { PlaylistItem } from "./populate.control";
 
 export function advert( playlistItem:PlaylistItem ){
     console.log(playlistItem)

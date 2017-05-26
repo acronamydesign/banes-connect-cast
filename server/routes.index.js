@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const noroot_route_1 = require("./routes/noroot.route");
 const consumer_route_1 = require("./routes/consumer.route");
 const settings_route_1 = require("./routes/settings.route");
