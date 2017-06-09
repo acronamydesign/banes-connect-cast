@@ -5,10 +5,14 @@ include src/templates/mixins/feed.pug
 include src/templates/mixins/message.pug
 include src/templates/mixins/video.pug
 
+- data = locals._.templates
+
 html
 	head
-		include src/templates/head
 		title= locals.location
+		script.
+			templates = !{data}
+		include src/templates/head
 
 	body(class!="env-"+_.env||"prod")
 		include src/templates/status-bar.partial.pug
@@ -16,8 +20,6 @@ html
 			.slides
 				section.blank(data-background-color="#0091c8")
 					h1= locals.location+" Connect Cast"
-					//blank is required for reveal to load correctly
-				//remaining content pushed by sse
 
 .overlay
 	.loader

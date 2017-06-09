@@ -20,4 +20,4 @@ routeInjection( app, serverConf );
 
 //greeter
 console.log("Server starting with host "+ args.host);
-//app.listen(serverConf.port);
+app.listen(serverConf.port);

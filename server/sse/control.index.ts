@@ -6,32 +6,32 @@ import * as cookie from "cookie";
 export function eventIndex(app, serverConf,sseServer){
     
 
-    sseServer.listen(serverConf.port, serverConf.host, function() {
-        const sse = new SSE(sseServer);
-        sse.on('connection', async function(client) {
-            /**
-             * Connection process.
-            */
-            const locationID = cookie.parse(client.req.headers.cookie).location
-            const templates = await populateCtrl(serverConf, locationID, client);
+    // sseServer.listen(serverConf.port, serverConf.host, function() {
+    //     const sse = new SSE(sseServer);
+    //     sse.on('connection', async function(client) {
+    //         /**
+    //          * Connection process.
+    //         */
+    //         const locationID = cookie.parse(client.req.headers.cookie).location
+    //         const templates = await populateCtrl(serverConf, locationID);
 
-            new Promise((resolve,reject)=>{
-                client.send("templates", JSON.stringify(templates));
-                resolve()
-            })
-            .then(function(){
-                console.log(locationID + " subscribed to SSE!");
-                client.send("greeting", "Hello "+locationID+" you are now subscribed!")
-                client.send("handshake",'SSE connected on '+serverConf.port);
-            })
+    //         new Promise((resolve,reject)=>{
+    //             client.send("templates", JSON.stringify(templates));
+    //             resolve()
+    //         })
+    //         .then(function(){
+    //             console.log(locationID + " subscribed to SSE!");
+    //             client.send("greeting", "Hello "+locationID+" you are now subscribed!")
+    //             client.send("handshake",'SSE connected on '+serverConf.port);
+    //         })
 
-        });
+    //     });
 
         
 
-        console.log("SSE listening on "+serverConf.port)
-        console.log("Server listening on "+serverConf.port)
-    });
+    //     console.log("SSE listening on "+serverConf.port)
+    //     console.log("Server listening on "+serverConf.port)
+    // });
 
 //    app.get('/stream', sse, function(req,res){
 

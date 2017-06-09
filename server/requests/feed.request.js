@@ -14,7 +14,7 @@ function loadFeedData(endpoint) {
         console.log("Requesting feed for " + endpoint);
         //Endpoint data
         let endpointData = yield request(endpoint);
-        endpointData = JSON.parse(endpointData);
+        endpointData = yield JSON.parse(endpointData);
         return endpointData.nodes.map(item => item.node);
     });
 }

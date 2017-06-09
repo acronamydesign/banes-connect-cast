@@ -4,11 +4,8 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const http = require("http");
 const yargs = require("yargs");
 const args = yargs.argv;
-//server side events
-const control_index_1 = require("./sse/control.index");
 const publicPath = "../public";
 const serverConf = {
     public: publicPath,
@@ -24,7 +21,7 @@ const serverConf = {
 const usePublic = serverConf.usePublic;
 function configure(app) {
     //start sse
-    const sseServer = http.createServer(app);
+    //const sseServer = http.createServer(app);
     //start socket io
     // const socketIoServer = http.createServer(app);
     // const IO = io.listen(socketIoServer);
@@ -48,8 +45,6 @@ function configure(app) {
     //Engines and serve
     app.set('views', usePublic(""));
     app.set('view engine', serverConf.engine);
-    //Events (SSE)
-    control_index_1.eventIndex(app, serverConf, sseServer);
     return serverConf;
 }
 exports.configure = configure;

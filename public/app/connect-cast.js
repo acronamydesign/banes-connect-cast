@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 147);
+/******/ 	return __webpack_require__(__webpack_require__.s = 145);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1899,7 +1899,7 @@ function loadLocale(name) {
             module && module.exports) {
         try {
             oldLocale = globalLocale._abbr;
-            __webpack_require__(136)("./" + name);
+            __webpack_require__(134)("./" + name);
             // because defineLocale currently also sets the global locale, we
             // want to undo that for lazy loaded locales
             getSetGlobalLocale(oldLocale);
@@ -4534,7 +4534,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(146)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(144)(module)))
 
 /***/ }),
 /* 1 */
@@ -4656,7 +4656,7 @@ var stylesInDom = {},
 	singletonElement = null,
 	singletonCounter = 0,
 	styleElementsInsertedAtTop = [],
-	fixUrls = __webpack_require__(137);
+	fixUrls = __webpack_require__(135);
 
 module.exports = function(list, options) {
 	if(typeof DEBUG !== "undefined" && DEBUG) {
@@ -21363,7 +21363,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(132);
+var content = __webpack_require__(130);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -21394,7 +21394,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(133);
+var content = __webpack_require__(131);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -21425,7 +21425,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(135);
+var content = __webpack_require__(133);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -32545,7 +32545,7 @@ module.exports = {
 	// Number of milliseconds between automatically proceeding to the
 	// next slide, disabled when set to 0, this value can be overwritten
 	// by using a data-autoslide attribute on your slides
-	autoSlide: 0,
+	autoSlide: 20000,
 
 	// Stop auto-sliding after user input
 	autoSlideStoppable: false,
@@ -32600,54 +32600,6 @@ module.exports = {
 
 /***/ }),
 /* 130 */
-/***/ (function(module, exports) {
-
-module.exports = function revealCustomEvents(Reveal) {
-
-    
-    
-}
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports) {
-
-module.exports = function ($, Reveal ) {
-
-
-    //interval
-    var defaultSpeed = 20000;
-    var autoslide;
-    function setDefaultSpeed(){
-        autoslide = setInterval(function(){
-            Reveal.next();
-        }, defaultSpeed);
-    }
-    setDefaultSpeed()
-
-    Reveal.addEventListener( 'slidechanged', function( event ) {
-        var isVideo = event.currentSlide.classList.contains('video')
-        if(isVideo){
-
-            $(".stat-bar").addClass("collapse");
-
-            clearInterval(autoslide);
-            var duration = $(event.currentSlide).data("duration")
-            setTimeout(function(){
-                setDefaultSpeed()
-                Reveal.next()
-            },duration)
-        }
-        else{
-            $(".stat-bar").removeClass("collapse");
-        }
-
-    });	
-
-}
-
-/***/ }),
-/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -32661,12 +32613,12 @@ exports.push([module.i, "/*!\n * reveal.js\n * http://lab.hakim.se/reveal-js\n *
 
 
 /***/ }),
-/* 133 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
 // imports
-exports.i(__webpack_require__(134), "");
+exports.i(__webpack_require__(132), "");
 
 // module
 exports.push([module.i, "/**\n * White theme for reveal.js. This is the opposite of the 'black' theme.\n *\n * By Hakim El Hattab, http://hakim.se\n */\nsection.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {\n  color: #fff; }\n\n/*********************************************\n * GLOBAL STYLES\n *********************************************/\nbody {\n  background: #fff;\n  background-color: #fff; }\n\n.reveal {\n  font-family: \"Source Sans Pro\", Helvetica, sans-serif;\n  font-size: 42px;\n  font-weight: normal;\n  color: #222; }\n\n::selection {\n  color: #fff;\n  background: #98bdef;\n  text-shadow: none; }\n\n::-moz-selection {\n  color: #fff;\n  background: #98bdef;\n  text-shadow: none; }\n\n.reveal .slides > section,\n.reveal .slides > section > section {\n  line-height: 1.3;\n  font-weight: inherit; }\n\n/*********************************************\n * HEADERS\n *********************************************/\n.reveal h1,\n.reveal h2,\n.reveal h3,\n.reveal h4,\n.reveal h5,\n.reveal h6 {\n  margin: 0 0 20px 0;\n  color: #222;\n  font-family: \"Source Sans Pro\", Helvetica, sans-serif;\n  font-weight: 600;\n  line-height: 1.2;\n  letter-spacing: normal;\n  text-transform: uppercase;\n  text-shadow: none;\n  word-wrap: break-word; }\n\n.reveal h1 {\n  font-size: 2.5em; }\n\n.reveal h2 {\n  font-size: 1.6em; }\n\n.reveal h3 {\n  font-size: 1.3em; }\n\n.reveal h4 {\n  font-size: 1em; }\n\n.reveal h1 {\n  text-shadow: none; }\n\n/*********************************************\n * OTHER\n *********************************************/\n.reveal p {\n  margin: 20px 0;\n  line-height: 1.3; }\n\n/* Ensure certain elements are never larger than the slide itself */\n.reveal img,\n.reveal video,\n.reveal iframe {\n  max-width: 95%;\n  max-height: 95%; }\n\n.reveal strong,\n.reveal b {\n  font-weight: bold; }\n\n.reveal em {\n  font-style: italic; }\n\n.reveal ol,\n.reveal dl,\n.reveal ul {\n  display: inline-block;\n  text-align: left;\n  margin: 0 0 0 1em; }\n\n.reveal ol {\n  list-style-type: decimal; }\n\n.reveal ul {\n  list-style-type: disc; }\n\n.reveal ul ul {\n  list-style-type: square; }\n\n.reveal ul ul ul {\n  list-style-type: circle; }\n\n.reveal ul ul,\n.reveal ul ol,\n.reveal ol ol,\n.reveal ol ul {\n  display: block;\n  margin-left: 40px; }\n\n.reveal dt {\n  font-weight: bold; }\n\n.reveal dd {\n  margin-left: 40px; }\n\n.reveal q,\n.reveal blockquote {\n  quotes: none; }\n\n.reveal blockquote {\n  display: block;\n  position: relative;\n  width: 70%;\n  margin: 20px auto;\n  padding: 5px;\n  font-style: italic;\n  background: rgba(255, 255, 255, 0.05);\n  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }\n\n.reveal blockquote p:first-child,\n.reveal blockquote p:last-child {\n  display: inline-block; }\n\n.reveal q {\n  font-style: italic; }\n\n.reveal pre {\n  display: block;\n  position: relative;\n  width: 90%;\n  margin: 20px auto;\n  text-align: left;\n  font-size: 0.55em;\n  font-family: monospace;\n  line-height: 1.2em;\n  word-wrap: break-word;\n  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }\n\n.reveal code {\n  font-family: monospace; }\n\n.reveal pre code {\n  display: block;\n  padding: 5px;\n  overflow: auto;\n  max-height: 400px;\n  word-wrap: normal; }\n\n.reveal table {\n  margin: auto;\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.reveal table th {\n  font-weight: bold; }\n\n.reveal table th,\n.reveal table td {\n  text-align: left;\n  padding: 0.2em 0.5em 0.2em 0.5em;\n  border-bottom: 1px solid; }\n\n.reveal table th[align=\"center\"],\n.reveal table td[align=\"center\"] {\n  text-align: center; }\n\n.reveal table th[align=\"right\"],\n.reveal table td[align=\"right\"] {\n  text-align: right; }\n\n.reveal table tbody tr:last-child th,\n.reveal table tbody tr:last-child td {\n  border-bottom: none; }\n\n.reveal sup {\n  vertical-align: super; }\n\n.reveal sub {\n  vertical-align: sub; }\n\n.reveal small {\n  display: inline-block;\n  font-size: 0.6em;\n  line-height: 1.2em;\n  vertical-align: top; }\n\n.reveal small * {\n  vertical-align: top; }\n\n/*********************************************\n * LINKS\n *********************************************/\n.reveal a {\n  color: #2a76dd;\n  text-decoration: none;\n  -webkit-transition: color .15s ease;\n  -moz-transition: color .15s ease;\n  transition: color .15s ease; }\n\n.reveal a:hover {\n  color: #6ca0e8;\n  text-shadow: none;\n  border: none; }\n\n.reveal .roll span:after {\n  color: #fff;\n  background: #1a53a1; }\n\n/*********************************************\n * IMAGES\n *********************************************/\n.reveal section img {\n  margin: 15px 0px;\n  background: rgba(255, 255, 255, 0.12);\n  border: 4px solid #222;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }\n\n.reveal section img.plain {\n  border: 0;\n  box-shadow: none; }\n\n.reveal a img {\n  -webkit-transition: all .15s linear;\n  -moz-transition: all .15s linear;\n  transition: all .15s linear; }\n\n.reveal a:hover img {\n  background: rgba(255, 255, 255, 0.2);\n  border-color: #2a76dd;\n  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }\n\n/*********************************************\n * NAVIGATION CONTROLS\n *********************************************/\n.reveal .controls .navigate-left,\n.reveal .controls .navigate-left.enabled {\n  border-right-color: #2a76dd; }\n\n.reveal .controls .navigate-right,\n.reveal .controls .navigate-right.enabled {\n  border-left-color: #2a76dd; }\n\n.reveal .controls .navigate-up,\n.reveal .controls .navigate-up.enabled {\n  border-bottom-color: #2a76dd; }\n\n.reveal .controls .navigate-down,\n.reveal .controls .navigate-down.enabled {\n  border-top-color: #2a76dd; }\n\n.reveal .controls .navigate-left.enabled:hover {\n  border-right-color: #6ca0e8; }\n\n.reveal .controls .navigate-right.enabled:hover {\n  border-left-color: #6ca0e8; }\n\n.reveal .controls .navigate-up.enabled:hover {\n  border-bottom-color: #6ca0e8; }\n\n.reveal .controls .navigate-down.enabled:hover {\n  border-top-color: #6ca0e8; }\n\n/*********************************************\n * PROGRESS BAR\n *********************************************/\n.reveal .progress {\n  background: rgba(0, 0, 0, 0.2); }\n\n.reveal .progress span {\n  background: #2a76dd;\n  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);\n  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }\n", ""]);
@@ -32675,7 +32627,7 @@ exports.push([module.i, "/**\n * White theme for reveal.js. This is the opposite
 
 
 /***/ }),
-/* 134 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -32683,13 +32635,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(119) + ");\n    src: url(" + __webpack_require__(119) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(139) + ") format('woff'),\n         url(" + __webpack_require__(143) + ") format('truetype');\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(118) + ");\n    src: url(" + __webpack_require__(118) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(138) + ") format('woff'),\n         url(" + __webpack_require__(142) + ") format('truetype');\n    font-weight: normal;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(120) + ");\n    src: url(" + __webpack_require__(120) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(140) + ") format('woff'),\n         url(" + __webpack_require__(144) + ") format('truetype');\n    font-weight: 600;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(121) + ");\n    src: url(" + __webpack_require__(121) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(141) + ") format('woff'),\n         url(" + __webpack_require__(145) + ") format('truetype');\n    font-weight: 600;\n    font-style: italic;\n}", ""]);
+exports.push([module.i, "@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(119) + ");\n    src: url(" + __webpack_require__(119) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(137) + ") format('woff'),\n         url(" + __webpack_require__(141) + ") format('truetype');\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(118) + ");\n    src: url(" + __webpack_require__(118) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(136) + ") format('woff'),\n         url(" + __webpack_require__(140) + ") format('truetype');\n    font-weight: normal;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(120) + ");\n    src: url(" + __webpack_require__(120) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(138) + ") format('woff'),\n         url(" + __webpack_require__(142) + ") format('truetype');\n    font-weight: 600;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: 'Source Sans Pro';\n    src: url(" + __webpack_require__(121) + ");\n    src: url(" + __webpack_require__(121) + "?#iefix) format('embedded-opentype'),\n         url(" + __webpack_require__(139) + ") format('woff'),\n         url(" + __webpack_require__(143) + ") format('truetype');\n    font-weight: 600;\n    font-style: italic;\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 135 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -32703,7 +32655,7 @@ exports.push([module.i, "body {\n  font-family: sans-serif;\n  background-color:
 
 
 /***/ }),
-/* 136 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -32952,10 +32904,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 136;
+webpackContext.id = 134;
 
 /***/ }),
-/* 137 */
+/* 135 */
 /***/ (function(module, exports) {
 
 
@@ -33050,55 +33002,55 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 138 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-italic.woff";
 
 /***/ }),
-/* 139 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-regular.woff";
 
 /***/ }),
-/* 140 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-semibold.woff";
 
 /***/ }),
-/* 141 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-semibolditalic.woff";
 
 /***/ }),
-/* 142 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-italic.ttf";
 
 /***/ }),
-/* 143 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-regular.ttf";
 
 /***/ }),
-/* 144 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-semibold.ttf";
 
 /***/ }),
-/* 145 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/source-sans-pro-semibolditalic.ttf";
 
 /***/ }),
-/* 146 */
+/* 144 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -33126,7 +33078,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 147 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //Webpack 
@@ -33138,6 +33090,10 @@ var $ = __webpack_require__(128);
 var reveal = __webpack_require__(123);
 var revealConf = __webpack_require__(129);
 var es = new EventSource("/sse");
+
+
+
+var templates = window.templates;
 
 //get the location cookie.
 var cookies = __webpack_require__(122),
@@ -33155,84 +33111,99 @@ document.addEventListener("DOMContentLoaded", function(event) {
         //load clock
         __webpack_require__(127)();
         //configure reveal
-        
-        var revealCustomEvents = __webpack_require__(130);
-
-        revealCustomEvents(reveal);
 
     }
-});
-
-es.addEventListener("templates", function(event){
-    var data = JSON.parse(event.data);
 
     $(function(){
         var target = $(".reveal .slides");
-        data.forEach(function(data) {
-            if(data.template && !data.disabled){
-                var tense = target.children().length === 0 ? "present" : "future";
-                var template = data.template;
-                template = template.replace("{{tense}}",tense);
-                template = template.replace("{{index}}",data.index);
-                
-                $(".overlay").addClass("show");
-                $(".reveal .slides").append(template)
+        for (var data = 0; data < templates.length; data++) {
+            var html = templates[data].template;
 
-                setTimeout(function(){
-                    $(".overlay").removeClass("show");
-                },2000)
-
-                //reveal.sync()
+            if(!/data-disable="true"/g.test(html)){
+                target.append(html)
             }
-        });
-    })
 
-})
+        }
+
+    });
 
 
-// es.addEventListener("populate", function(event){ 
+    //init
+    reveal.initialize( revealConf );
+
+});
+
+
+// es.addEventListener("templates", function(event){
 //     var data = JSON.parse(event.data);
-//     // //malformed data will not render
-//     var target = $(".reveal .slides");
 
-//     if(data.template){
-//         var tense = target.children().length === 0 ? "present" : "future";
-//         var template = data.template;
-//         template = template.replace("{{tense}}",tense);
-//         template = template.replace("{{index}}",data.index);
-        
-//         $(".overlay").addClass("show");
-//         $(".reveal .slides").append(template)
+//     $(function(){
+//         var target = $(".reveal .slides");
+//         data.forEach(function(data) {
+//             if(data.template && !data.disabled){
+//                 var tense = target.children().length === 0 ? "present" : "future";
+//                 var template = data.template;
+//                 template = template.replace("{{tense}}",tense);
+//                 template = template.replace("{{index}}",data.index);
+                
+//                 $(".overlay").addClass("show");
+//                 $(".reveal .slides").append(template)
 
-//         setTimeout(function(){
-//             $(".overlay").removeClass("show");
-            
-//         },2000)
+//                 setTimeout(function(){
+//                     $(".overlay").removeClass("show");
+//                 },2000)
 
-//         reveal.sync()
-//     }
+//                 //reveal.sync()
+//             }
+//         });
+//     })
+
 // })
 
-/*initial data*/
-var loadPoll;
-es.addEventListener("handshake", function(greeting){
-    loadPoll = setInterval(function(){
-        console.log("document state: "+document.readyState)
-        if(document.readyState === "complete"){
-            clearInterval(loadPoll);
-            console.log(greeting.data)
-            //between sse connected
-            console.log("Data sent as lump, no realtime capabilities.")
-            //start reveal
-            reveal.initialize( revealConf );
-        }
-    },100)
-})
 
-window.onload = function(){
-    var revealPostCustomEvents = __webpack_require__(131)
-    revealPostCustomEvents($, reveal );
-}
+// // es.addEventListener("populate", function(event){ 
+// //     var data = JSON.parse(event.data);
+// //     // //malformed data will not render
+// //     var target = $(".reveal .slides");
+
+// //     if(data.template){
+// //         var tense = target.children().length === 0 ? "present" : "future";
+// //         var template = data.template;
+// //         template = template.replace("{{tense}}",tense);
+// //         template = template.replace("{{index}}",data.index);
+        
+// //         $(".overlay").addClass("show");
+// //         $(".reveal .slides").append(template)
+
+// //         setTimeout(function(){
+// //             $(".overlay").removeClass("show");
+            
+// //         },2000)
+
+// //         reveal.sync()
+// //     }
+// // })
+
+// /*initial data*/
+// var loadPoll;
+// es.addEventListener("handshake", function(greeting){
+//     loadPoll = setInterval(function(){
+//         console.log("document state: "+document.readyState)
+//         if(document.readyState === "complete"){
+//             clearInterval(loadPoll);
+//             console.log(greeting.data)
+//             //between sse connected
+//             console.log("Data sent as lump, no realtime capabilities.")
+//             //start reveal
+//             reveal.initialize( revealConf );
+//         }
+//     },100)
+// })
+
+// window.onload = function(){
+//     var revealPostCustomEvents = require("@scripts/reveal-post-custom-events.js")
+//     revealPostCustomEvents($, reveal );
+// }
 
 /***/ })
 /******/ ]);

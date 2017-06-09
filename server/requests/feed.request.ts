@@ -7,7 +7,7 @@ export async function loadFeedData( endpoint ){
     //Endpoint data
     let endpointData = await request(endpoint);
 
-    endpointData = JSON.parse(endpointData);
+    endpointData = await JSON.parse(endpointData);
 
     return endpointData.nodes.map(item=>item.node);
 }

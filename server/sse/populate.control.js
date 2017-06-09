@@ -12,7 +12,7 @@ const location_request_1 = require("../requests/location.request");
 //get rendered templates
 const view_mode_sorting_1 = require("../sorting/view-mode.sorting");
 //Go and build the templates server side, when ready emit them to connected client
-function playlistItemHandler(playlistItem, client, locationId, intendedIndex) {
+function playlistItemHandler(playlistItem, locationId, intendedIndex) {
     return __awaiter(this, void 0, void 0, function* () {
         const viewMode = playlistItem.view_mode;
         if (viewMode === "advert_image") {
@@ -40,18 +40,18 @@ function playlistItemHandler(playlistItem, client, locationId, intendedIndex) {
         }
     });
 }
-function populateCtrl(serverConf, locationId, client) {
+function populateCtrl(serverConf, locationId) {
     return __awaiter(this, void 0, void 0, function* () {
         const endpointData = yield location_request_1.location(serverConf, locationId);
         //initial loaded content
         const slides = [];
         endpointData.forEach(function (playlistItem, intendedIndex) {
-            let results = playlistItemHandler(playlistItem, client, locationId, intendedIndex);
+            let results = playlistItemHandler(playlistItem, locationId, intendedIndex);
             slides.push(results);
         });
         //Ready to send
         if (slides.length === endpointData.length) {
-            return Promise.all(slides);
+            return yield slides;
         }
     });
 }

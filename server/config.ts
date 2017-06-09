@@ -64,7 +64,7 @@ const usePublic = serverConf.usePublic;
 export function configure(app){
 
     //start sse
-    const sseServer = http.createServer(app);
+    //const sseServer = http.createServer(app);
  
 
 
@@ -96,9 +96,6 @@ export function configure(app){
 	//Engines and serve
 	app.set('views', 		usePublic(""));
 	app.set('view engine', 	serverConf.engine);
-
-	//Events (SSE)
-    eventIndex(app, serverConf, sseServer);
 	
 	return serverConf;
 }

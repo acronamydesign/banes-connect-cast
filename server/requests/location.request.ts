@@ -8,6 +8,8 @@ import * as urlJoin from "url-join";
 import * as request from "request-promise";
 
 export async function location( serverConf, locationID:string ){
+
+
     const location = locationID,
             parentSite = hypertextProtocal( serverConf.parentSite, "http://" ),
             endpoint = urlJoin( parentSite, "get", stringFunctions.hyphanate(location) );

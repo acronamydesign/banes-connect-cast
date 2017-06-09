@@ -38,7 +38,7 @@ export interface PlaylistItem{
 
 
 //Go and build the templates server side, when ready emit them to connected client
-async function playlistItemHandler(playlistItem, client, locationId, intendedIndex){
+async function playlistItemHandler(playlistItem, locationId, intendedIndex){
 
     const viewMode = playlistItem.view_mode;
 
@@ -69,19 +69,20 @@ async function playlistItemHandler(playlistItem, client, locationId, intendedInd
     }
 }
 
-export async function populateCtrl(serverConf, locationId, client){
+export async function populateCtrl(serverConf, locationId){
+
     const endpointData = await location(serverConf, locationId);
     //initial loaded content
     const slides = []
 
     endpointData.forEach(function(playlistItem, intendedIndex){
 
-        let results = playlistItemHandler(playlistItem, client, locationId, intendedIndex)
+        let results = playlistItemHandler(playlistItem, locationId, intendedIndex)
         slides.push(results);
     });
 
     //Ready to send
     if(slides.length === endpointData.length){
-        return Promise.all(slides)
+        return await slides
     }
 }
