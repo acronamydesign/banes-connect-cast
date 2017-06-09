@@ -14,13 +14,6 @@ String.prototype.capitalize = function() {
 
 	Object.defineProperty($, "data", { get: function () { return data } });
 
-	//shorthand
-	$.body = function(value){
-		var value = value||'safe_value'
-		return $.field('body')[value]||''
-	}
-
-
 	$.debug = function(m){
 		if(m==='data'){
 			console.log(data)

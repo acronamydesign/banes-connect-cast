@@ -1,25 +1,16 @@
-var express = require('express'),
-		app = express(),
-		http = require('http'),
-		jade = require('jade'),
-		path = require('path'),
-		fs = require('fs'),
-		favicon = require('serve-favicon'),
-		conf = require('../configuration/conf.json')// include global settings
-
-var useConf = {}
-useConf.public = '../public'
-useConf.engine = conf.templateEngine
-useConf.frontend_port = conf.port
-useConf.host = conf.localhost
-
-//favicon buggering requests so lets serve one
-app.use(favicon(path.resolve(__dirname,useConf.public,'themes','favicon.gif')))
-
-//set config
-var io = require('./conf.js')
-	.bind(useConf)(app)
-
-//auto load routes
-require('./load_routes.js')(app,io,useConf)
-require('./messages/greeting.js')(useConf)
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const yargs = require("yargs");
+const args = yargs.argv;
+console.log(args);
+const app = express();
+const config_1 = require("./config");
+const routes_index_1 = require("./routes.index");
+//load config
+const serverConf = config_1.configure(app);
+//load routes
+routes_index_1.routeInjection(app, serverConf);
+//greeter
+console.log("Server starting with host " + args.host);
+app.listen(serverConf.port);

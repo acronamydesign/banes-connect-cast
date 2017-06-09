@@ -1,0 +1,10 @@
+mixin feed(slide)
+	section(class!=slide.view_mode)
+		h1= slide.title
+
+	for i in slide.content
+		section(class!=slide.view_mode+" tint" data-background!=i.image)
+			h1=i.title
+		for x in i.body
+			section(class!=slide.view_mode data-background='#fefefe')
+				p= x

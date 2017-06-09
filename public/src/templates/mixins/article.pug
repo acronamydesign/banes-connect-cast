@@ -1,0 +1,19 @@
+mixin article(slide)
+	section(class!=slide.view_mode data-background='#fefefe')
+		if slide.image
+			h3= slide.title+' '
+			img(src!="data:image/png;base64,"+slide.image)
+		else
+			h3= slide.title+' '
+
+		-// image goes here
+	for i in slide.content
+		section(class!=slide.view_mode data-background='#fefefe')
+			p=i
+
+- //Make articles scroll downwards.
+- //	section(class!=slide.view_mode data-background='#fefefe')
+- //		h3= slide.title+' '
+- //		for i in slide.content
+- //			section(class!=slide.view_mode data-background='#fefefe')
+- //				p=i

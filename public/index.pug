@@ -1,0 +1,26 @@
+//slide types
+include src/templates/mixins/advert.pug
+include src/templates/mixins/article.pug
+include src/templates/mixins/feed.pug
+include src/templates/mixins/message.pug
+include src/templates/mixins/video.pug
+
+- data = locals._.templates
+
+html
+	head
+		title= locals.location
+		script.
+			templates = !{data}
+		include src/templates/head
+
+	body(class!="env-"+_.env||"prod")
+		include src/templates/status-bar.partial.pug
+		.reveal
+			.slides
+				section.blank(data-background-color="#0091c8")
+					h1= locals.location+" Connect Cast"
+
+.overlay
+	.loader
+		span.loader-text

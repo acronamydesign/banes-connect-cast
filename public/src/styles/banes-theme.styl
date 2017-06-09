@@ -1,0 +1,96 @@
+body
+    font-family:sans-serif;
+    background-color:#000;
+
+
+$shade-start = 0%;
+$shade-end-color = .1;
+
+.stat-bar
+    color #fff;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    position: fixed;
+    background-color:rgba(0,0,0,.6);
+    transition:height .3s ease-in;
+
+.stat-bar.collapse
+    height:0;
+
+//sizing
+$content-height = 85vh;
+$stat-bar-height = 100vh - $content-height;
+
+.reveal.default
+    height: $content-height;
+    position: absolute;
+    padding-top: $stat-bar-height;
+
+.reveal .backgrounds
+    div.feed-splash
+        &:before
+            content:"";
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            display:block;
+            position:absolute;
+            background-color:#333;
+            opacity:.9;
+.reveal .slides
+    section.feed-splash
+        color:#fff;
+        h1,
+        h4
+            color:@color;
+            max-width:60%;
+            margin:0 auto;
+            text-shadow:0px 2px 2px rgba(0,0,0,0.8);
+            line-height:1.5em;
+            text-transform:capitalize;
+        h4
+            margin-top:10px;
+            display:inline-block;
+            font-size:50%;
+            padding-left:50px;
+            background-image:url("/images/feed.png");
+            background-position:left;
+            background-size:auto 1em;
+            background-repeat:no-repeat;
+            margin:0 auto;
+
+    // Article
+    z-index:8000!important;
+    section.article
+        header.details
+            text-align: left;
+            font-size:50%;
+        article
+                text-align: left;
+        footer
+            font-size: 50%;
+            text-align: left;
+            .page-number
+                .devider
+                    &:before
+                        content:"of";
+    section.feed
+        header.details
+            text-align: left;
+            font-size:50%;
+        article
+                text-align: left;
+        footer
+            font-size: 50%;
+            text-align: left;
+            .page-number
+                .devider
+                    &:before
+                        content:"of";
+
+.reveal .backgrounds
+    div.slide-background.article.article-content,
+    div.slide-background.feed.feed-content
+        opacity: .1;
+    div.slide-background.feed-splash
+        background-blend-mode: multiply;
