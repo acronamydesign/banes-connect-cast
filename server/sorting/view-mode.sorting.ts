@@ -69,7 +69,7 @@ function chunkFeedItemTemplate(title:string, body:string, image:string){
                 "</article>",
                 "<footer>",
                     "<span class='page-number'>",
-                        "page:" + (index+1) + "<span class='devider'></span>" +pages.length,
+                        "page: " + (index+1) + "<span class='devider'> </span>" +pages.length,
                     "<span>",
                     "<span class='feed-icon'></span>",                    
                 "</footer>",
@@ -106,7 +106,7 @@ function chunkTemplate(title:string, content:string[], image, viewMode){
                 "</article>",
                 "<footer>",
                     "<span class='page-number'>",
-                        "page: "+(index+1)+" <span class='devider'></span>" +content.length,
+                        "page: "+(index+1)+" <span class='devider'> </span>" +content.length,
                     "<span>",
                 "</footer>",
             "</section>"

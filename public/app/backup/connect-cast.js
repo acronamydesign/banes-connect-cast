@@ -21471,11 +21471,10 @@ module.exports = function clock(params) {
 		var c = custom
 
 		document.querySelector('.stat-right .date').innerHTML = c.d+" "+c.m+" "+c.dn
-		//document.querySelector('.stat-right .time').innerHTML = c.t
+		document.querySelector('.stat-right .time').innerHTML = c.t
 	}
 
 }
-
 
 /***/ }),
 /* 128 */

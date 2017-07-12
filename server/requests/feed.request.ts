@@ -1,6 +1,4 @@
-
 import * as request from "request-promise";
-
 export async function loadFeedData( endpoint ){
 
     console.log("Requesting feed for "+ endpoint);
